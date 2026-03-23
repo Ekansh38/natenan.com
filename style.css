@@ -40,7 +40,14 @@ header {
     height: calc(100vh - 84px);
 }
 
-.home-nav nav {
+.home-nav-inner {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+    width: 100%;
+}
+
+.nav-row {
     display: flex;
     width: 100%;
     justify-content: space-around;
@@ -48,13 +55,17 @@ header {
     padding: 0 4%;
 }
 
-.home-nav nav a {
+.nav-row--secondary {
+    padding: 0 20%;
+}
+
+.nav-row a {
     font-size: clamp(1.4rem, 2.5vw, 2rem);
     letter-spacing: 0.02em;
     transition: opacity 0.15s;
 }
 
-.home-nav nav a:hover {
+.nav-row a:hover {
     opacity: 0.35;
 }
 
