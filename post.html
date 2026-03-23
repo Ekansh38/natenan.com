@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>post — natenan.com</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <a href="index.html" class="site-title">natenan.com</a>
+    </header>
+    <main class="section-page">
+        <div id="post-content"></div>
+    </main>
+    <script>
+        const slug = new URLSearchParams(window.location.search).get('slug');
+
+        fetch('posts.json')
+            .then(r => r.json())
+            .then(posts => {
+                const post = posts.find(p => p.slug === slug);
+                const el = document.getElementById('post-content');
+
+                if (!post) {
+                    el.innerHTML = '<p class="project-desc">post not found.</p>';
+                    return;
+                }
+
+                document.title = post.title + ' — natenan.com';
+
+                const paragraphs = post.body
+                    .split(/\n\n+/)
+                    .map(p => `<p class="post-body">${p.replace(/\n/g, '<br>')}</p>`)
+                    .join('');
+
+                el.innerHTML = `
+                    <h1 class="post-title">${post.title}</h1>
+                    <p class="post-date">${post.date}</p>
+                    <div class="post-text">${paragraphs}</div>
+                    <a href="blog.html" class="post-back">← back</a>
+                `;
+            });
+    </script>
+</body>
+</html>

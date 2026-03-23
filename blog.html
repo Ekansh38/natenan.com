@@ -13,27 +13,25 @@
     </header>
     <main class="section-page">
         <h1>blog</h1>
-        <div class="project-list">
-
-            <div class="project">
-                <p class="project-title">post_title_one</p>
-                <p class="project-desc">placeholder post description or excerpt goes here.</p>
-                <div class="project-links">
-                    <a href="#">read</a>
-                </div>
-            </div>
-
-            <hr class="divider">
-
-            <div class="project">
-                <p class="project-title">post_title_two</p>
-                <p class="project-desc">placeholder post description or excerpt goes here.</p>
-                <div class="project-links">
-                    <a href="#">read</a>
-                </div>
-            </div>
-
-        </div>
+        <div class="project-list" id="post-list"></div>
     </main>
+    <script>
+        fetch('posts.json')
+            .then(r => r.json())
+            .then(posts => {
+                const list = document.getElementById('post-list');
+                if (posts.length === 0) {
+                    list.innerHTML = '<p class="project-desc">no posts yet.</p>';
+                    return;
+                }
+                list.innerHTML = posts.map((post, i) => `
+                    ${i > 0 ? '<hr class="divider">' : ''}
+                    <div class="project">
+                        <a href="post.html?slug=${post.slug}" class="project-title post-link">${post.title}</a>
+                        <p class="project-desc">${post.date}</p>
+                    </div>
+                `).join('');
+            });
+    </script>
 </body>
 </html>
