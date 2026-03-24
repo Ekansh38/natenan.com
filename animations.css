@@ -92,11 +92,11 @@ body::before {
 
 /* album covers — desaturate + slight blur by default, full on hover */
 .album-cover img {
-    filter: grayscale(55%) blur(0.6px);
+    filter: grayscale(55%);
     transition: filter 0.45s ease;
 }
 .album:hover .album-cover img {
-    filter: grayscale(0%) blur(0px);
+    filter: grayscale(0%);
 }
 
 /* site-title hidden until typewriter runs */
