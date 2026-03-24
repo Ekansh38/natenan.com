@@ -6,17 +6,19 @@
     <title>natenan.com</title>
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="animations.css">
 </head>
 <body>
     <header>
         <a href="index.html" class="site-title">natenan.com</a>
     </header>
     <main class="home-scattered">
-        <a href="art.html"     class="scattered-link" style="left:11%; top:58%; transform:rotate(-2deg)">art</a>
-        <a href="music.html"   class="scattered-link" style="left:52%; top:40%; transform:rotate(1deg)">music</a>
-        <a href="gamedev.html" class="scattered-link" style="left:72%; top:65%; transform:rotate(-1.5deg)">game dev</a>
-        <a href="blog.html"    class="scattered-link" style="left:30%; top:25%; transform:rotate(2deg)">blog</a>
-        <a href="contact.html" class="scattered-link" style="left:68%; top:22%; transform:rotate(-2.5deg)">contact</a>
+        <a href="art.html"     class="scattered-link" style="left:11%; top:58%; --rot:-2deg">  <span class="scattered-text">art</span></a>
+        <a href="music.html"   class="scattered-link" style="left:52%; top:40%; --rot:1deg">   <span class="scattered-text">music</span></a>
+        <a href="gamedev.html" class="scattered-link" style="left:72%; top:65%; --rot:-1.5deg"><span class="scattered-text">game dev</span></a>
+        <a href="blog.html"    class="scattered-link" style="left:30%; top:25%; --rot:2deg">   <span class="scattered-text">blog</span></a>
+        <a href="contact.html" class="scattered-link" style="left:68%; top:22%; --rot:-2.5deg"><span class="scattered-text">contact</span></a>
     </main>
+    <script src="animations.js"></script>
 </body>
 </html>

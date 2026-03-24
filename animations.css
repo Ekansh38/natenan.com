@@ -1,0 +1,105 @@
+/* ============================================================
+   animations.css
+   To disable ALL animations: remove the <link> tag for this
+   file from every HTML page's <head>.
+   ============================================================ */
+
+/* grain overlay */
+body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 9000;
+    opacity: 0.04;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-size: 180px;
+}
+
+/* page transition overlay */
+.page-overlay {
+    position: fixed;
+    inset: 0;
+    background: #fff;
+    z-index: 8000;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+.page-overlay.fade-out {
+    opacity: 0;
+}
+
+/* custom cursor */
+* { cursor: none !important; }
+.cursor-dot {
+    position: fixed;
+    width: 5px;
+    height: 5px;
+    background: #000;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+}
+
+/* scattered links — fade in + float */
+@keyframes fadeInLink {
+    from { opacity: 0; transform: translateY(6px) rotate(var(--rot, 0deg)); }
+    to   { opacity: 1; transform: translateY(0)   rotate(var(--rot, 0deg)); }
+}
+
+@keyframes floatLink {
+    0%, 100% { transform: translateY(0px)  rotate(var(--rot, 0deg)); }
+    50%       { transform: translateY(-7px) rotate(var(--rot, 0deg)); }
+}
+
+.scattered-link {
+    opacity: 0;
+    transform: rotate(var(--rot, 0deg));
+}
+
+.scattered-link.visible {
+    animation:
+        fadeInLink 0.6s ease forwards,
+        floatLink  var(--float-dur, 5s) ease-in-out var(--float-delay, 0s) infinite;
+}
+
+/* glitch on hover — applied to inner span only */
+@keyframes glitch {
+    0%   { transform: translateX(0);    opacity: 1;    }
+    15%  { transform: translateX(-3px); opacity: 0.7;  }
+    30%  { transform: translateX(3px);  opacity: 0.85; }
+    50%  { transform: translateX(-2px); opacity: 0.6;  }
+    70%  { transform: translateX(2px);  opacity: 0.8;  }
+    100% { transform: translateX(0);    opacity: 0.35; }
+}
+
+.scattered-link:hover .scattered-text {
+    display: inline-block;
+    animation: glitch 0.35s ease forwards;
+}
+
+/* section pages — fade up on load */
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(14px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.section-page {
+    animation: fadeUp 0.5s ease forwards;
+}
+
+/* album covers — desaturate + slight blur by default, full on hover */
+.album-cover img {
+    filter: grayscale(55%) blur(0.6px);
+    transition: filter 0.45s ease;
+}
+.album:hover .album-cover img {
+    filter: grayscale(0%) blur(0px);
+}
+
+/* site-title hidden until typewriter runs */
+.site-title {
+    visibility: hidden;
+}

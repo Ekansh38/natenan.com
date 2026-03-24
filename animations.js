@@ -1,0 +1,72 @@
+/* ============================================================
+   animations.js
+   To disable ALL animations: remove the <script> tag for this
+   file from every HTML page's <body>.
+   ============================================================ */
+
+/* typewriter — natenan.com header */
+function typewriter() {
+    const el = document.querySelector('.site-title');
+    if (!el) return;
+    const text = el.textContent.trim();
+    el.textContent = '';
+    el.style.visibility = 'visible';
+    let i = 0;
+    const tick = () => {
+        el.textContent = text.slice(0, ++i);
+        if (i < text.length) setTimeout(tick, 75);
+    };
+    setTimeout(tick, 150);
+}
+
+/* stagger fade-in + float for scattered home links */
+function staggerScattered() {
+    const links = document.querySelectorAll('.scattered-link');
+    if (!links.length) return;
+    const floatDurations = ['4.8s', '5.4s', '5.1s', '4.6s', '5.7s'];
+    links.forEach((el, i) => {
+        const delay = i * 0.14;
+        el.style.setProperty('--delay', delay + 's');
+        el.style.setProperty('--float-dur', floatDurations[i % floatDurations.length]);
+        el.style.setProperty('--float-delay', (delay + 0.6) + 's');
+        el.style.animationDelay = delay + 's';
+        setTimeout(() => el.classList.add('visible'), delay * 1000);
+    });
+}
+
+/* custom cursor dot */
+function initCursor() {
+    const dot = document.createElement('div');
+    dot.className = 'cursor-dot';
+    document.body.appendChild(dot);
+    document.addEventListener('mousemove', e => {
+        dot.style.left = e.clientX + 'px';
+        dot.style.top  = e.clientY + 'px';
+    });
+}
+
+/* page transitions — fade out on navigate, fade in on arrival */
+function pageTransitions() {
+    const overlay = document.createElement('div');
+    overlay.className = 'page-overlay';
+    document.body.appendChild(overlay);
+
+    requestAnimationFrame(() => {
+        requestAnimationFrame(() => overlay.classList.add('fade-out'));
+    });
+
+    document.addEventListener('click', e => {
+        const a = e.target.closest('a[href]');
+        if (!a) return;
+        const href = a.getAttribute('href');
+        if (!href || href.startsWith('http') || href.startsWith('mailto') || href.startsWith('#')) return;
+        e.preventDefault();
+        overlay.classList.remove('fade-out');
+        setTimeout(() => { window.location.href = href; }, 320);
+    });
+}
+
+typewriter();
+staggerScattered();
+initCursor();
+pageTransitions();
