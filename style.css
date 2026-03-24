@@ -29,43 +29,20 @@ header {
     opacity: 0.5;
 }
 
-.home-nav {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.home-scattered {
+    position: relative;
     height: calc(100vh - 84px);
 }
 
-.home-nav-inner {
-    display: flex;
-    flex-direction: column;
-    gap: 48px;
-    width: 100%;
-}
-
-.nav-row {
-    display: flex;
-    width: 100%;
-    justify-content: space-evenly;
-    align-items: center;
-}
-
-.nav-row a {
+.scattered-link {
+    position: absolute;
     font-size: clamp(1.4rem, 2.5vw, 2rem);
     letter-spacing: 0.02em;
     transition: opacity 0.15s;
 }
 
-.nav-row a:hover {
+.scattered-link:hover {
     opacity: 0.35;
-}
-
-.nav-disabled {
-    font-size: clamp(1.4rem, 2.5vw, 2rem);
-    letter-spacing: 0.02em;
-    color: #000;
-    opacity: 0.25;
-    cursor: default;
 }
 
 .section-page {
