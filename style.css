@@ -29,6 +29,13 @@ header {
     opacity: 0.5;
 }
 
+.site-bio {
+    font-size: 0.95rem;
+    color: #888;
+    letter-spacing: 0.03em;
+    margin-top: 6px;
+}
+
 .album-genre {
     font-size: 0.75rem;
     color: #888;
