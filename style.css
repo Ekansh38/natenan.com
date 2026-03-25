@@ -18,15 +18,60 @@ a {
 
 header {
     padding: 28px 36px;
+    display: flex;
+    align-items: baseline;
+    gap: 20px;
 }
 
 .site-title {
     font-size: 1.25rem;
     letter-spacing: 0.01em;
+    flex-shrink: 0;
 }
 
 .site-title:hover {
     opacity: 0.5;
+}
+
+.site-tagline {
+    font-size: 0.75rem;
+    color: #888;
+    letter-spacing: 0.04em;
+}
+
+.album-genre {
+    font-size: 0.75rem;
+    color: #888;
+    letter-spacing: 0.03em;
+    text-align: center;
+}
+
+.label-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 28px;
+    max-width: 560px;
+    text-align: center;
+}
+
+.label-logo {
+    width: 260px;
+    height: auto;
+    display: block;
+}
+
+.label-desc {
+    font-size: 0.9rem;
+    line-height: 1.7;
+    letter-spacing: 0.02em;
+    color: #333;
+}
+
+.label-members {
+    font-size: 0.8rem;
+    letter-spacing: 0.04em;
+    color: #888;
 }
 
 .home-scattered {
