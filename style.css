@@ -69,6 +69,14 @@ header {
     height: calc(100vh - 84px);
 }
 
+.scattered-bio {
+    position: absolute;
+    font-size: 0.75rem;
+    color: #999;
+    letter-spacing: 0.04em;
+    pointer-events: none;
+}
+
 .scattered-link {
     position: absolute;
     font-size: clamp(1.4rem, 2.5vw, 2rem);
