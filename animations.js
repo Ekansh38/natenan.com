@@ -34,17 +34,6 @@ function staggerScattered() {
     });
 }
 
-/* custom cursor dot */
-function initCursor() {
-    const dot = document.createElement('div');
-    dot.className = 'cursor-dot';
-    document.body.appendChild(dot);
-    document.addEventListener('mousemove', e => {
-        dot.style.left = e.clientX + 'px';
-        dot.style.top  = e.clientY + 'px';
-    });
-}
-
 /* page transitions — fade out on navigate, fade in on arrival */
 function pageTransitions() {
     const overlay = document.createElement('div');
@@ -87,6 +76,6 @@ function initTheme() {
 
 typewriter();
 staggerScattered();
-initCursor();
 pageTransitions();
 initTheme();
+

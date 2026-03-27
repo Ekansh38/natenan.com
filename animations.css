@@ -30,18 +30,6 @@ body::before {
     opacity: 0;
 }
 
-/* custom cursor */
-* { cursor: none !important; }
-.cursor-dot {
-    position: fixed;
-    width: 5px;
-    height: 5px;
-    background: var(--text);
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 9999;
-    transform: translate(-50%, -50%);
-}
 
 /* scattered links — fade in + bounce */
 @keyframes fadeInLink {
