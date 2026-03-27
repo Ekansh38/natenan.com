@@ -19,15 +19,15 @@ function typewriter() {
     setTimeout(tick, 150);
 }
 
-/* stagger fade-in + float for scattered home links */
+/* stagger fade-in + bounce for scattered home links */
 function staggerScattered() {
     const links = document.querySelectorAll('.scattered-link');
     if (!links.length) return;
-    const floatDurations = ['4.8s', '5.4s', '5.1s', '4.6s', '5.7s'];
+    const bounceDurations = ['4.8s', '5.4s', '5.1s', '4.6s', '5.7s', '5.0s'];
     links.forEach((el, i) => {
         const delay = i * 0.14;
         el.style.setProperty('--delay', delay + 's');
-        el.style.setProperty('--float-dur', floatDurations[i % floatDurations.length]);
+        el.style.setProperty('--float-dur', bounceDurations[i % bounceDurations.length]);
         el.style.setProperty('--float-delay', (delay + 0.6) + 's');
         el.style.animationDelay = delay + 's';
         setTimeout(() => el.classList.add('visible'), delay * 1000);
@@ -66,7 +66,27 @@ function pageTransitions() {
     });
 }
 
+/* light / dark mode toggle */
+function initTheme() {
+    const saved = localStorage.getItem('theme');
+    if (saved) document.documentElement.setAttribute('data-theme', saved);
+
+    const btn = document.createElement('button');
+    btn.className = 'theme-toggle';
+    const isDark = () => document.documentElement.getAttribute('data-theme') === 'dark';
+    btn.textContent = isDark() ? 'light' : 'dark';
+    document.body.appendChild(btn);
+
+    btn.addEventListener('click', () => {
+        const next = isDark() ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', next);
+        localStorage.setItem('theme', next);
+        btn.textContent = isDark() ? 'light' : 'dark';
+    });
+}
+
 typewriter();
 staggerScattered();
 initCursor();
 pageTransitions();
+initTheme();
