@@ -14,7 +14,10 @@
     </header>
     <main class="section-page contact-page">
         <h1>contact</h1>
-        <p class="contact-email"><a href="mailto:aforekj@gmail.com">aforekj@gmail.com</a></p>
+        <p class="contact-email">
+            <a href="mailto:aforekj@gmail.com">aforekj@gmail.com</a>
+            <button class="copy-btn" onclick="navigator.clipboard.writeText('aforekj@gmail.com').then(()=>{this.textContent='copied';setTimeout(()=>this.textContent='copy',1500)})">copy</button>
+        </p>
     </main>
     <script src="animations.js"></script>
 </body>
