@@ -54,6 +54,19 @@ header {
     margin-top: 6px;
 }
 
+.back-link {
+    display: block;
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    margin-top: 4px;
+    transition: opacity 0.15s;
+}
+
+.back-link:hover {
+    opacity: 0.45;
+}
+
 .album-genre {
     font-size: 0.75rem;
     color: var(--muted);
@@ -406,9 +419,9 @@ header {
 }
 
 .shop-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 64px 48px;
+    display: flex;
+    flex-direction: column;
+    gap: 72px;
     max-width: 1000px;
     margin: 0 auto;
 }
@@ -416,24 +429,38 @@ header {
 .shop-item {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 18px;
+}
+
+.shop-pair {
+    display: flex;
+    gap: 12px;
+}
+
+.shop-pair .shop-img-wrap {
+    flex: 1;
+}
+
+.shop-item-single .shop-img-wrap {
+    max-width: 480px;
 }
 
 .shop-img-wrap {
     position: relative;
-    width: 100%;
-    aspect-ratio: 1 / 1;
-    background: var(--placeholder);
-    overflow: hidden;
 }
 
 .shop-img-wrap img {
-    position: absolute;
-    inset: 0;
     width: 100%;
-    height: 100%;
-    object-fit: cover;
+    height: auto;
     display: block;
+}
+
+.shop-view-label {
+    display: block;
+    font-size: 0.65rem;
+    letter-spacing: 0.18em;
+    color: var(--muted);
+    margin-top: 6px;
 }
 
 .shop-meta {
@@ -493,10 +520,6 @@ header {
 
 .shop-back:hover {
     opacity: 0.45;
-}
-
-[data-theme="dark"] .shop-img-wrap {
-    background: #f2f2f2;
 }
 
 /* ── responsive ───────────────────────────────────── */
